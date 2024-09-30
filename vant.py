@@ -91,20 +91,24 @@ for i in range(0, 71*40):
     secoes3d[2][i]=z_atual
     
     """verificar esta parte (variaveis para se plotar pontos)"""
-    if (i<40):
-        desenho3d=[desenho3d,secoes3d[1][i]/1000, secoes3d[2][i]/1000, secoes3d[0][i]/1000]
+    """if (i<40):
+        desenho3d=desenho3d[secoes3d[1][i]/1000, secoes3d[2][i]/1000, secoes3d[0][i]/1000]
     elif (i % 40 ==0):
-        desenho3d=[desenho3d, secoes3d[1][i]/1000, secoes3d[2][i]/1000, secoes3d[0][i]/1000, secoes3d[i-41][2]/1000, secoes3d[i-41][3]/1000, secoes3d[i-41][1]/1000]
+        desenho3d=desenho3d[secoes3d[1][i]/1000, secoes3d[2][i]/1000, secoes3d[0][i]/1000, secoes3d[i-41][2]/1000, secoes3d[i-41][3]/1000, secoes3d[i-41][1]/1000]
     else:
-        desenho3d=[desenho3d, secoes3d[1][i]/1000, secoes3d[2][i]/1000, secoes3d[0][i]/1000, secoes3d[i-40][2]/1000, secoes3d[i-40][3]/1000, secoes3d[i-40][1]/1000, secoes3d[i][2]/1000, secoes3d[i][3]/1000, secoes3d[i][1]/1000]
+        desenho3d=desenho3d[secoes3d[1][i]/1000, secoes3d[2][i]/1000, secoes3d[0][i]/1000, secoes3d[i-40][2]/1000, secoes3d[i-40][3]/1000, secoes3d[i-40][1]/1000, secoes3d[i][2]/1000, secoes3d[i][3]/1000, secoes3d[i][1]/1000]"""
+    
     t_atual=t_atual+passo_t
 
 print("aguarde, gerando arquivo......")
 
-"""passa codigo para o autocad"""
+"""passa codigo para o autocad""" """(diferenciar eixo x em l3 e l4)"""
 for i in range(0,10000):
     l1 = acad.model.AddLine(APoint(arco1[i],deslocamento[i]), APoint(arco1[i+1], deslocamento[i+1]))   
     l2 = acad.model.AddLine(APoint(arco2[i],deslocamento[i]), APoint(arco2[i+1], deslocamento[i+1]))
+    l3 = acad.model.AddLine(APoint(0,deslocamento[i],arco1[i]), APoint(0,deslocamento[i+1],arco1[i+1]))
+    l4 = acad.model.AddLine(APoint(0,deslocamento[i],arco2[i]), APoint(0,deslocamento[i+1],arco2[i+1]))
+
 print(f"processo completo(checar arquivo {arq_nome} no autocad)")
 
 
